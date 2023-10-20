@@ -24,7 +24,7 @@ class AppButtons {
   }
 
   static GestureDetector secondaryButton(
-      {required String text, required VoidCallback onPressed}) {
+      {required String text, required VoidCallback onPressed, double? buttonRadius, Color? borderColor, Color? textColor,}) {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
@@ -35,18 +35,18 @@ class AppButtons {
         height: 43,
         width: double.maxFinite,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
+            borderRadius: BorderRadius.circular(buttonRadius??5),
             border: Border.all(
-              color: AppColors.kPrimaryColor,
+              color: borderColor?? AppColors.kPrimaryColor,
             )),
         child: Center(
           child: Text(
             text,
-            style: const TextStyle(
+            style: TextStyle(
               fontFamily: 'Poppins',
               fontSize: 14,
               fontWeight: FontWeight.w700,
-              color: AppColors.kPrimaryColor,
+              color: textColor?? AppColors.kPrimaryColor,
             ),
           ),
         ),

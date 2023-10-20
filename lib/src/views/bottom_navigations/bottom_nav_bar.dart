@@ -4,6 +4,7 @@ import 'package:issa_employee_panel/src/views/bottom_navigations/assigned_patien
 import 'package:issa_employee_panel/src/views/bottom_navigations/employment_information.dart';
 import 'package:issa_employee_panel/src/views/bottom_navigations/home.dart';
 import 'package:issa_employee_panel/src/views/bottom_navigations/profile.dart';
+import 'package:issa_employee_panel/src/views/drawer/app_drawer.dart';
 
 class AppBottomNavBar extends StatefulWidget {
   const AppBottomNavBar({super.key});
@@ -13,6 +14,8 @@ class AppBottomNavBar extends StatefulWidget {
 }
 
 class _AppBottomNavBarState extends State<AppBottomNavBar> {
+  // GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
   final List<Widget> _body = [
     const Home(),
     EmploymentInfo(),
@@ -24,6 +27,7 @@ class _AppBottomNavBarState extends State<AppBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const AppDrawer(),
       body: _body[_selectedIndex],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
@@ -64,13 +68,15 @@ class _AppBottomNavBarState extends State<AppBottomNavBar> {
               BottomNavigationBarItem(
                 icon: (_selectedIndex == 1)
                     ? Image.asset('assets/icons/employment_info_selected.png')
-                    : Image.asset('assets/icons/employment_info_unselected.png'),
+                    : Image.asset(
+                        'assets/icons/employment_info_unselected.png'),
                 label: '',
               ),
               BottomNavigationBarItem(
                 icon: (_selectedIndex == 2)
                     ? Image.asset('assets/icons/assigned_patient_selected.png')
-                    : Image.asset('assets/icons/assigned_patient_unselected.png'),
+                    : Image.asset(
+                        'assets/icons/assigned_patient_unselected.png'),
                 label: '',
               ),
               BottomNavigationBarItem(
