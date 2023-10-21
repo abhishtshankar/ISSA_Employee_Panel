@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:issa_employee_panel/src/common/widget/app_colors.dart';
-import 'package:issa_employee_panel/src/views/bottom_navigations/assigned_patient.dart';
-import 'package:issa_employee_panel/src/views/bottom_navigations/employment_information.dart';
-import 'package:issa_employee_panel/src/views/bottom_navigations/home.dart';
+import 'package:issa_employee_panel/src/views/bottom_navigations/bottom_navbar_items/assigned_patient.dart';
+import 'package:issa_employee_panel/src/views/bottom_navigations/bottom_navbar_items/employment_information.dart';
+
+import 'package:issa_employee_panel/src/views/bottom_navigations/bottom_navbar_items/home.dart';
 import 'package:issa_employee_panel/src/views/bottom_navigations/profile.dart';
 import 'package:issa_employee_panel/src/views/drawer/app_drawer.dart';
 

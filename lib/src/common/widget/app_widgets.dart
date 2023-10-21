@@ -251,4 +251,52 @@ Container buildAppOptionCards({
       ),
     ),
   );
+
+
+  
+}
+
+Container buildCustomTextField1({String? header, String? hintText, double? hMargin, double? vMargin, double? headerSize,}){
+  return Container(
+              margin: EdgeInsets.symmetric(horizontal: hMargin??0, vertical: vMargin??20),
+              width: double.maxFinite,
+              color: Colors.transparent,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    header??'Lorem Ipsum',
+                    style: TextStyle(
+                      fontSize: headerSize??16,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'Poppins',
+                    ),
+                  ),
+                  buildVSpacer(20),
+                  SizedBox(
+                    height: 50,
+                    width: double.maxFinite,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(5),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.black.withOpacity(0.6),
+                            ),
+                          ),
+                          hintText: hintText??'Enter your Lorem Ipsum',
+                          hintStyle: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'Poppins',
+                           color: Colors.black.withOpacity(0.6),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
 }

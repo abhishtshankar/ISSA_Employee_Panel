@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:issa_employee_panel/src/common/widget/app_buttons.dart';
 import 'package:issa_employee_panel/src/common/widget/app_colors.dart';
 import 'package:issa_employee_panel/src/common/widget/app_widgets.dart';
+import 'package:issa_employee_panel/src/views/drawer/drawer_items/employment_application.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({super.key});
@@ -11,6 +12,60 @@ class AppDrawer extends StatefulWidget {
 }
 
 class _AppDrawerState extends State<AppDrawer> {
+  final List<Map<String, String>> _drawerElements = [
+    {
+      'icon': 'assets/icons/employment_application.png',
+      'title': 'Employment Application',
+    },
+    {
+      'icon': 'assets/icons/group_notes.png',
+      'title': 'Group Notes',
+    },
+    {
+      'icon': 'assets/icons/training.png',
+      'title': 'Training',
+    },
+    {
+      'icon': 'assets/icons/assigned_patient.png',
+      'title': 'Assigned Patient',
+    },
+    {
+      'icon': 'assets/icons/time_off_request.png',
+      'title': 'Time Off Request',
+    },
+    {
+      'icon': 'assets/icons/time_sheet.png',
+      'title': 'Time Sheet/Employee Schedule',
+    },
+    {
+      'icon': 'assets/icons/employee_performance.png',
+      'title': 'Employee Performance',
+    },
+    {
+      'icon': 'assets/icons/employee_tracking.png',
+      'title': 'Employee Tracking/ Upload',
+    },
+    {
+      'icon': 'assets/icons/patient_chart.png',
+      'title': 'Patient Chart',
+    },
+    {
+      'icon': 'assets/icons/patient_vitals.png',
+      'title': 'Patient Vitals',
+    },
+    {
+      'icon': 'assets/icons/employee_tracking.png',
+      'title': 'Patient Tracking',
+    },
+    {
+      'icon': 'assets/icons/medication.png',
+      'title': 'Medications',
+    },
+    {
+      'icon': 'assets/icons/settings.png',
+      'title': 'Settings',
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -86,25 +141,33 @@ class _AppDrawerState extends State<AppDrawer> {
                   textColor: AppColors.kTextColor1,
                 ),
                 buildVSpacer(20),
-                for(int i=0; i<12; i++)
-                ListTile(
-                  leading: Image.asset(
-                    'assets/icons/employment_application.png',
-                  ),
-
-                  title: const Text(
-                    'Employment Application ',
-                  ),
-                  titleTextStyle: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Poppins',
-                      color: Colors.black.withOpacity(0.8)
+                for (var elements in _drawerElements)
+                  ListTile(
+                    onTap: () {
+                      if (elements['title'] == 'Employment Application') {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const EmploymentApplication(),
+                          ),
+                        );
+                      }
+                    },
+                    leading: Image.asset(
+                      '${elements['icon']}',
                     ),
-                  trailing: const Icon(
-                    Icons.keyboard_arrow_right,
+                    title: Text(
+                      '${elements['title']}',
+                    ),
+                    titleTextStyle: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Poppins',
+                        color: Colors.black.withOpacity(0.8)),
+                    trailing: const Icon(
+                      Icons.keyboard_arrow_right,
+                    ),
                   ),
-                ),
               ],
             ),
           ),
