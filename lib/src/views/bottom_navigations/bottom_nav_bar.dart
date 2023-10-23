@@ -8,7 +8,11 @@ import 'package:issa_employee_panel/src/views/bottom_navigations/profile.dart';
 import 'package:issa_employee_panel/src/views/drawer/app_drawer.dart';
 
 class AppBottomNavBar extends StatefulWidget {
-  const AppBottomNavBar({super.key});
+  int? index;
+AppBottomNavBar({
+  this.index,
+    super.key,
+  });
 
   @override
   State<AppBottomNavBar> createState() => _AppBottomNavBarState();
@@ -23,7 +27,13 @@ class _AppBottomNavBarState extends State<AppBottomNavBar> {
     const AssignedPatient(),
     Profile(),
   ];
-  int _selectedIndex = 0;
+  late int _selectedIndex;
+
+  @override
+  void initState() {
+    _selectedIndex = widget.index??0;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

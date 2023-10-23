@@ -3,7 +3,7 @@ import 'package:issa_employee_panel/src/common/widget/app_buttons.dart';
 import 'package:issa_employee_panel/src/common/widget/app_colors.dart';
 import 'package:issa_employee_panel/src/common/widget/app_widgets.dart';
 import 'package:issa_employee_panel/src/views/bottom_navigations/bottom_nav_bar.dart';
-import 'package:issa_employee_panel/src/views/notes_library.dart';
+import 'package:issa_employee_panel/src/views/drawer/drawer_items/group_notes/notes_library.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -55,7 +55,7 @@ class _SignUpState extends State<SignUp> {
               ),
               buildVSpacer(30),
               AppButtons.primaryButton(text: 'CONTINUE', onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>const AppBottomNavBar(),),);
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>AppBottomNavBar(),),);
               },),
             ],
           ),

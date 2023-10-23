@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:issa_employee_panel/src/common/widget/app_colors.dart';
 import 'package:issa_employee_panel/src/views/auth/login.dart';
-import 'package:issa_employee_panel/src/views/notes_library.dart'; 
+import 'package:issa_employee_panel/src/views/drawer/drawer_items/group_notes/notes_library.dart'; 
 
 
 Future<void> main() async{

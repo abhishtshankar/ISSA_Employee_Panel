@@ -3,6 +3,7 @@ import 'package:issa_employee_panel/src/common/widget/app_buttons.dart';
 import 'package:issa_employee_panel/src/common/widget/app_colors.dart';
 import 'package:issa_employee_panel/src/common/widget/app_widgets.dart';
 import 'package:issa_employee_panel/src/views/drawer/drawer_items/employment_application.dart';
+import 'package:issa_employee_panel/src/views/drawer/drawer_items/group_notes/group_notes.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({super.key});
@@ -149,6 +150,14 @@ class _AppDrawerState extends State<AppDrawer> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => const EmploymentApplication(),
+                          ),
+                        );
+                      }
+                      if (elements['title'] == 'Group Notes') {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const GroupNotes(),
                           ),
                         );
                       }

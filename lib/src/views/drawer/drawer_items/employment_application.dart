@@ -5,6 +5,7 @@ import 'package:issa_employee_panel/src/common/widget/app_buttons.dart';
 import 'package:issa_employee_panel/src/common/widget/app_colors.dart';
 import 'package:issa_employee_panel/src/common/widget/app_widgets.dart';
 import 'package:issa_employee_panel/src/views/auth/signup.dart';
+import 'package:issa_employee_panel/src/views/bottom_navigations/bottom_nav_bar.dart';
 
 class EmploymentApplication extends StatefulWidget {
   const EmploymentApplication({super.key});
@@ -74,6 +75,10 @@ class _EmploymentApplicationState extends State<EmploymentApplication> {
                     visible: _currentPageIndex == 3,
                     child: _buildOtherInformation(),
                   ),
+                  Visibility(
+                    visible: _currentPageIndex == 4,
+                    child: _buildAcknowledgement(size),
+                  ),
                 ],
               ),
             ),
@@ -86,11 +91,15 @@ class _EmploymentApplicationState extends State<EmploymentApplication> {
               color: Colors.white,
               padding: const EdgeInsets.all(18.0),
               child: AppButtons.primaryButton(
-                text: 'NEXT',
+                text: (_currentPageIndex == 4) ? 'SUBMIT' : 'NEXT',
                 onPressed: () {
-                  setState(() {
-                    _currentPageIndex++;
-                  });
+                  if (_currentPageIndex == 4) {
+                    Navigator.pop(context);
+                  } else {
+                    setState(() {
+                      _currentPageIndex++;
+                    });
+                  }
                 },
               ),
             ),
@@ -164,142 +173,224 @@ class _EmploymentApplicationState extends State<EmploymentApplication> {
     );
   }
 
+  Column _buildAcknowledgement(Size size) {
+    return Column(
+      children: <Widget>[
+        _buildTextHeader2(
+          title: 'SKILLS AND QUALIFICATIONS',
+        ),
+        buildVSpacer(20),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18.0),
+          child: Text(
+            'Summarize special skills and qualifications acquired from employment or other experiences that may qualify you for work with COMPANY NAME.',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              fontFamily: 'Poppins',
+              color: Colors.black.withOpacity(0.6),
+            ),
+          ),
+        ),
+        for (int i = 0; i < 4; i++)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18.0),
+            child: TextField(
+              decoration: InputDecoration(
+                enabledBorder: UnderlineInputBorder(
+                  borderRadius: BorderRadius.circular(5),
+                  borderSide: BorderSide(
+                    color: Colors.black.withOpacity(0.6),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5),
+                  borderSide: BorderSide(
+                    color: Colors.black.withOpacity(0.6),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        buildVSpacer(20),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18.0),
+          child: Text(
+            'By signing below, I acknowledge that all the information I have provided is accurate and true. I understand that, if employed, falsified statement on this application shall be ground to dismissal. I understand and agree that if employed, my employment will be “at will” and can be terminated with or without cause and with or without notice, at any time of COMPANY NAME.or myself. Furthermore, I authorize COMPANY NAME to thoroughly investigate my work, education and other matters related to my suitability for employment.',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              fontFamily: 'Poppins',
+              color: Colors.black.withOpacity(0.6),
+            ),
+          ),
+        ),
+        buildVSpacer(20),
+        buildCustomTextField1(
+          hMargin: 18,
+          header: 'Name of Applicant',
+          headerSize: 14,
+        ),
+        buildVSpacer(10),
+        buildUploader(size: size),
+        buildVSpacer(50),
+        Container(
+          height: 40,
+          width: 120,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(3),
+            color: AppColors.kPrimaryColor,
+          ),
+          child: const Center(
+            child: Text(
+              'PRINT REPORT',
+              style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w500,
+                fontSize: 12,
+              ),
+            ),
+          ),
+        ),
+        buildVSpacer(100),
+      ],
+    );
+  }
+
   Column _buildOtherInformation() => Column(
-                      children: <Widget>[
-                        _buildTextHeader2(title: 'MILITARY EXPERIENCE'),
-                        buildVSpacer(20),
-                        _buildTextHeader(
-                            title: 'Have you ever served in the armed forces?'),
-                        _buildYesNoBlock(value: _servedInArmedForces),
-                        buildCustomTextField1(
-                          hMargin: 18,
-                          header: 'If yes, which speciality?',
-                          headerSize: 14,
+        children: <Widget>[
+          _buildTextHeader2(title: 'MILITARY EXPERIENCE'),
+          buildVSpacer(20),
+          _buildTextHeader(title: 'Have you ever served in the armed forces?'),
+          _buildYesNoBlock(value: _servedInArmedForces),
+          buildCustomTextField1(
+            hMargin: 18,
+            header: 'If yes, which speciality?',
+            headerSize: 14,
+          ),
+          _buildTextContainer(
+            header: 'Date Entered',
+            content: 'Tue Dec 20',
+          ),
+          _buildTextContainer(
+            header: 'Date Discharged',
+            content: 'Tue Dec 20',
+          ),
+          _buildTextHeader(
+            title: 'Are you currently a member of the national guard?',
+          ),
+          _buildYesNoBlock(value: true),
+          _buildTextHeader(
+            title: 'Do you have a Valid Driver’s License',
+          ),
+          _buildYesNoBlock(value: _servedInArmedForces),
+          buildCustomTextField1(
+            hMargin: 18,
+            header: 'Driver’s License Number',
+            headerSize: 14,
+          ),
+          buildCustomTextField1(
+            hMargin: 18,
+            header: 'Class',
+            headerSize: 14,
+          ),
+          buildCustomTextField1(
+            hMargin: 18,
+            header: 'State Issued',
+            headerSize: 14,
+          ),
+          buildVSpacer(20),
+          _buildTextHeader2(title: 'FOR OFFICE POSITIONS ONLY'),
+          buildVSpacer(20),
+          _buildTextHeader(
+            title: 'Do you have typing skills on the computer?',
+          ),
+          _buildYesNoBlock(value: true),
+          buildCustomTextField1(
+            hMargin: 18,
+            header: 'Words Per Minute',
+            headerSize: 14,
+          ),
+          buildVSpacer(20),
+          _buildTextHeader(
+            title:
+                'Are you familiar with using Microsoft Word, Microsoft Excel, etc?',
+          ),
+          _buildYesNoBlock(value: true),
+          buildCustomTextField1(
+            hMargin: 18,
+            header: 'Other skills:',
+            headerSize: 14,
+          ),
+          buildVSpacer(20),
+          _buildTextHeader2(title: '3 PROFESSIONAL REFERENCES'),
+          buildVSpacer(10),
+          Align(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 18),
+              child: Container(
+                height: 40,
+                width: 80,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  border: Border.all(
+                    color: AppColors.kPrimaryColor,
+                  ),
+                ),
+                child: const Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Text(
+                        'Add',
+                        style: TextStyle(
+                          color: AppColors.kPrimaryColor,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
                         ),
-                        _buildTextContainer(
-                          header: 'Date Entered',
-                          content: 'Tue Dec 20',
-                        ),
-                        _buildTextContainer(
-                          header: 'Date Discharged',
-                          content: 'Tue Dec 20',
-                        ),
-                        _buildTextHeader(
-                          title:
-                              'Are you currently a member of the national guard?',
-                        ),
-                        _buildYesNoBlock(value: true),
-                        _buildTextHeader(
-                          title: 'Do you have a Valid Driver’s License',
-                        ),
-                        _buildYesNoBlock(value: _servedInArmedForces),
-                        buildCustomTextField1(
-                          hMargin: 18,
-                          header: 'Driver’s License Number',
-                          headerSize: 14,
-                        ),
-                        buildCustomTextField1(
-                          hMargin: 18,
-                          header: 'Class',
-                          headerSize: 14,
-                        ),
-                        buildCustomTextField1(
-                          hMargin: 18,
-                          header: 'State Issued',
-                          headerSize: 14,
-                        ),
-                        buildVSpacer(20),
-                        _buildTextHeader2(title: 'FOR OFFICE POSITIONS ONLY'),
-                        buildVSpacer(20),
-                        _buildTextHeader(
-                          title: 'Do you have typing skills on the computer?',
-                        ),
-                        _buildYesNoBlock(value: true),
-                        buildCustomTextField1(
-                          hMargin: 18,
-                          header: 'Words Per Minute',
-                          headerSize: 14,
-                        ),
-                        buildVSpacer(20),
-                        _buildTextHeader(
-                          title:
-                              'Are you familiar with using Microsoft Word, Microsoft Excel, etc?',
-                        ),
-                        _buildYesNoBlock(value: true),
-                        buildCustomTextField1(
-                          hMargin: 18,
-                          header: 'Other skills:',
-                          headerSize: 14,
-                        ),
-                        buildVSpacer(20),
-                        _buildTextHeader2(title: '3 PROFESSIONAL REFERENCES'),
-                        buildVSpacer(10),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 18),
-                            child: Container(
-                              height: 40,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                border: Border.all(
-                                  color: AppColors.kPrimaryColor,
-                                ),
-                              ),
-                              child: const Center(
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: <Widget>[
-                                    Text(
-                                      'Add',
-                                      style: TextStyle(
-                                        color: AppColors.kPrimaryColor,
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                    Icon(
-                                      Icons.add,
-                                      color: AppColors.kPrimaryColor,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        buildVSpacer(10),
-                        buildCustomTextField1(
-                          hMargin: 18,
-                          header: 'Full Name',
-                          headerSize: 14,
-                        ),
-                        buildCustomTextField1(
-                          hMargin: 18,
-                          header: 'Address',
-                          headerSize: 14,
-                        ),
-                        buildCustomTextField1(
-                          hMargin: 18,
-                          header: 'Company ',
-                          headerSize: 14,
-                        ),
-                        buildCustomTextField1(
-                          hMargin: 18,
-                          header: 'Phone Number ',
-                          headerSize: 14,
-                        ),
-                        buildCustomTextField1(
-                          hMargin: 18,
-                          header: 'How long have you known him/her?',
-                          headerSize: 14,
-                        ),
-                        buildVSpacer(100),
-                      ],
-                    );
+                      ),
+                      Icon(
+                        Icons.add,
+                        color: AppColors.kPrimaryColor,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+          buildVSpacer(10),
+          buildCustomTextField1(
+            hMargin: 18,
+            header: 'Full Name',
+            headerSize: 14,
+          ),
+          buildCustomTextField1(
+            hMargin: 18,
+            header: 'Address',
+            headerSize: 14,
+          ),
+          buildCustomTextField1(
+            hMargin: 18,
+            header: 'Company ',
+            headerSize: 14,
+          ),
+          buildCustomTextField1(
+            hMargin: 18,
+            header: 'Phone Number ',
+            headerSize: 14,
+          ),
+          buildCustomTextField1(
+            hMargin: 18,
+            header: 'How long have you known him/her?',
+            headerSize: 14,
+          ),
+          buildVSpacer(100),
+        ],
+      );
 
   Column _buildEmploymentHistory() => Column(
         children: <Widget>[

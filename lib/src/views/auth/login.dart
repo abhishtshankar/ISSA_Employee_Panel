@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:issa_employee_panel/src/common/widget/app_buttons.dart';
 import 'package:issa_employee_panel/src/common/widget/app_widgets.dart';
 import 'package:issa_employee_panel/src/views/auth/signup.dart';
-import 'package:issa_employee_panel/src/views/notes_library.dart';
+import 'package:issa_employee_panel/src/views/bottom_navigations/bottom_nav_bar.dart';
+import 'package:issa_employee_panel/src/views/drawer/drawer_items/group_notes/notes_library.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -94,7 +95,7 @@ class _LoginState extends State<Login> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const NotesLibrary(),
+                        builder: (context) => AppBottomNavBar(),
                       ),
                     );
                   },

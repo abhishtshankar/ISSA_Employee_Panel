@@ -300,3 +300,82 @@ Container buildCustomTextField1({String? header, String? hintText, double? hMarg
               ),
             );
 }
+
+Container buildUploader({required Size size}) {
+  return  Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 18),
+                          height: 120,
+                          width: size.width,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(7),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.15),
+                                blurRadius: 15,
+                                spreadRadius: 5,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 30, vertical: 20),
+                            decoration: BoxDecoration(
+                              color: AppColors.kPrimaryColor.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(7),
+                            ),
+                            child: Row(
+                              children: <Widget>[
+                                Image.asset('assets/images/cloud_upload.png'),
+                                buildHSpacer(20),
+                                Column(
+                                  children: <Widget>[
+                                    Container(
+                                      height: 30,
+                                      width: 120,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(3),
+                                        border: Border.all(
+                                          color: AppColors.kTextColor1,
+                                        ),
+                                      ),
+                                      child: const Center(
+                                        child: Text(
+                                          'SAVED AS DRAFT',
+                                          style: TextStyle(
+                                            color: AppColors.kTextColor1,
+                                            fontFamily: 'Poppins',
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 10,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    buildVSpacer(20),
+                                    Container(
+                                      height: 30,
+                                      width: 120,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(3),
+                                        color: AppColors.kTextColor1,
+                                      ),
+                                      child: const Center(
+                                        child: Text(
+                                          'SAVED AND SIGNED',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontFamily: 'Poppins',
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 10,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+}
