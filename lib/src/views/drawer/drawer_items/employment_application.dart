@@ -234,25 +234,7 @@ class _EmploymentApplicationState extends State<EmploymentApplication> {
         buildVSpacer(10),
         buildUploader(size: size),
         buildVSpacer(50),
-        Container(
-          height: 40,
-          width: 120,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(3),
-            color: AppColors.kPrimaryColor,
-          ),
-          child: const Center(
-            child: Text(
-              'PRINT REPORT',
-              style: TextStyle(
-                color: Colors.white,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w500,
-                fontSize: 12,
-              ),
-            ),
-          ),
-        ),
+        buildPrintButton(),
         buildVSpacer(100),
       ],
     );
@@ -326,42 +308,7 @@ class _EmploymentApplicationState extends State<EmploymentApplication> {
           buildVSpacer(20),
           _buildTextHeader2(title: '3 PROFESSIONAL REFERENCES'),
           buildVSpacer(10),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18),
-              child: Container(
-                height: 40,
-                width: 80,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  border: Border.all(
-                    color: AppColors.kPrimaryColor,
-                  ),
-                ),
-                child: const Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Text(
-                        'Add',
-                        style: TextStyle(
-                          color: AppColors.kPrimaryColor,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                        ),
-                      ),
-                      Icon(
-                        Icons.add,
-                        color: AppColors.kPrimaryColor,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
+          buildAddButton(),
           buildVSpacer(10),
           buildCustomTextField1(
             hMargin: 18,

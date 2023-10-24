@@ -3,12 +3,12 @@ import 'package:issa_employee_panel/src/common/widget/app_colors.dart';
 
 class AppButtons {
   static Container primaryButton(
-      {required String text, required VoidCallback onPressed}) {
+      {required String text, required VoidCallback onPressed, double? hMargin, double? vMargin,}) {
     return Container(
-      // margin: const EdgeInsets.symmetric(
-      //   horizontal: 18,
-      //   vertical: 18,
-      // ),
+      margin: EdgeInsets.symmetric(
+        horizontal: hMargin??0,
+        vertical: vMargin??0,
+      ),
       height: 43,
       width: double.maxFinite,
       decoration: BoxDecoration(

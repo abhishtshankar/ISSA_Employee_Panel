@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:issa_employee_panel/src/common/widget/app_widgets.dart';
 import 'package:issa_employee_panel/src/views/drawer/drawer_items/group_notes/therapy_notes_details.dart';
+import 'package:issa_employee_panel/src/views/drawer/drawer_items/group_notes/visitor_log.dart';
 
 
 class TherapyNotes extends StatefulWidget {
@@ -54,6 +55,14 @@ class _TherapyNotesState extends State<TherapyNotes> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => const TherapyNotesDetails(),
+                      ),
+                    );
+                  }
+                   if (elements['title'] == 'Visitor Log') {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const VisitorLog(),
                       ),
                     );
                   }
