@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:issa_employee_panel/src/common/widget/app_colors.dart';
 import 'package:issa_employee_panel/src/common/widget/app_widgets.dart';
+import 'package:issa_employee_panel/src/views/drawer/drawer_items/employment_application.dart';
 
 class EmploymentInfo extends StatelessWidget {
   EmploymentInfo({super.key});
@@ -16,6 +17,7 @@ class EmploymentInfo extends StatelessWidget {
             title: const Text('EMPLOYMENT INFORMATION'),
           ),
           buildVSpacer(20),
+
           const Padding(
             padding: EdgeInsets.symmetric(
               horizontal: 18,
@@ -36,6 +38,21 @@ class EmploymentInfo extends StatelessWidget {
               spacing: 12,
               runSpacing: 18,
               children: <Widget>[
+                GestureDetector(
+                  onTap: () {
+                    // Navigate to EMPLOYMENT APPLICATION SCREEN
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => EmploymentApplication(),
+                      ),
+                    );
+                  },
+                  child: buildAppOptionCards(
+                    image: 'assets/images/home1.png',
+                    title: 'Application',
+                    fillDetails: true,
+                  ),
+                ),
                 for (var elements in _cardValues)
                   buildAppOptionCards(
                     image: elements['image'],
@@ -52,11 +69,6 @@ class EmploymentInfo extends StatelessWidget {
   }
 
   final List<Map<String, dynamic>> _cardValues = [
-    {
-      'image': 'assets/images/home1.png',
-      'title': 'Application',
-      'fillDetails': true,
-    },
     {
       'image': 'assets/images/home2.png',
       'title': 'Personal Information',
